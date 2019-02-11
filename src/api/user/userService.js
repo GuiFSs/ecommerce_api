@@ -1,6 +1,6 @@
-const user = require('./user')
+const user = require('./user');
 
-user.methods(['get', 'post', 'put', 'delete'])
-user.updateOptions({new: true, runValidators: true})
+user.methods(['get', 'post', 'put', 'delete']);
+user.updateOptions({ new: true, runValidators: true });
 
-module.exports = user
+module.exports = user;

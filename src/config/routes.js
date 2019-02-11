@@ -1,11 +1,15 @@
-const express = require('express')
+const express = require('express');
 
-module.exports = function(server){
-    //API ROUTER
-    const router = express.Router()
-    server.use('/register', router)
+module.exports = function(server) {
+  //API ROUTER
+  const router = express.Router();
+  server.use('/api', router);
 
-    //User routes
-    const produtoService = require('../api/user/userService')
-    produtoService.register(router, '/user')
-}
+  //User routes
+  const userService = require('../api/user/userService');
+  userService.register(router, '/user');
+
+  //Produto routes
+  const produtoService = require('../api/produto/produtoService');
+  produtoService.register(router, '/product');
+};
