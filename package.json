@@ -1,31 +1,33 @@
 {
   "name": "ecommerce_api",
   "version": "1.0.0",
-  "description": "api do e-commerce",
-  "main": "src/loader.js",
+  "description": "API do e-commerce",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon",
-    "production": "pm2 start src/loader.js --name E-commerce"
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndersonSantanna/ecommerce_api.git"
+    "url": "git+https://github.com/GuiFSs/ecommerce_api.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "GuiFSs",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AndersonSantanna/ecommerce_api/issues"
+    "url": "https://github.com/GuiFSs/ecommerce_api/issues"
   },
-  "homepage": "https://github.com/AndersonSantanna/ecommerce_api#readme",
+  "homepage": "https://github.com/GuiFSs/ecommerce_api#readme",
   "dependencies": {
+    "axios": "0.18.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "mongoose": "^5.4.11",
-    "node-restful": "^0.2.6",
-    "pm2": "^3.2.9"
+    "concurrently": "^3.6.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "jwt-decode": "^2.2.0",
+    "mongoose": "5.4.11",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.5.0"
   },
-  "devDependencies": {
-    "nodemon": "^1.18.10"
-  }
+  "proxy": "http://localhost:5000"
 }
