@@ -64,34 +64,4 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-/**
- * @route POST api/produtos/
- * @description Post criar produto
- * @acesso Privado
- */
-// será preciso mudar essa rota e/ou auth
-router.post('/', async (req, res) => {
-  const { errors, isValid } = validarProdutoInput(req.body);
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
-  try {
-    // TODO: talvez precise fazer uma verificacao para nao criar produtos com nomes repetidos
-    // try {
-    //   const categoria = await Categoria.find({ nome });
-    //   if (categoria.length >= 1) {
-    //     errors.categoria = 'Categoria já existe';
-    //     return res.status(400).json(errors);
-    //   }
-    // } catch (err) {
-    //   res.status(400).json(err);
-    // }
-    const newProduto = new Produto({ ...req.body });
-    await newProduto.save();
-    res.status(201).json({ message: 'Produto criado com sucesso' });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
 module.exports = router;
