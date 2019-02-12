@@ -15,7 +15,7 @@ const Usuario = require('../../models/Usuario');
  * @description Cadastrar novo usuario
  * @acesso Publico
  */
-router.post('/', async (req, res) => {
+router.post('/cadastrar', async (req, res) => {
   const { errors, isValid } = validarRegistroInput(req.body);
 
   if (!isValid) {
@@ -53,7 +53,7 @@ router.post('/', async (req, res) => {
  * @description Login user using email and password
  * @acesso Publico
  */
-router.get('/', async (req, res) => {
+router.post('/login', async (req, res) => {
   const { errors, isValid } = validarLoginInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
