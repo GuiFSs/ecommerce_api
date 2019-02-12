@@ -4,7 +4,7 @@
   "description": "API do e-commerce",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
