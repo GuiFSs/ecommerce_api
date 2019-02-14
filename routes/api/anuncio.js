@@ -2,7 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const Anuncio = require('../../models/Anuncio');
-const keys_anuncio = require('../../config/keys_anuncio');
+let keys_anuncio = {};
+
+if (process.env.NODE_ENV === 'production') {
+  keys_anuncio.user = process.env.USER;
+  keys_anuncio.password = process.env.PASSWORD;
+} else {
+  keys_anuncio = require('../../config/keys_anuncio');
+}
 
 /**
  * @route GET api/anuncio
