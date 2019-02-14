@@ -8,6 +8,7 @@ const produtos = require('./routes/api/produtos');
 const usuarios = require('./routes/api/usuarios');
 const categorias = require('./routes/api/categorias');
 const pagamento = require('./routes/api/pagamento');
+const anuncios = require('./routes/api/anuncio');
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -30,6 +31,7 @@ app.use('/api/usuario', usuarios);
 app.use('/api/produtos', produtos);
 app.use('/api/categorias', categorias);
 app.use('/api/pagamento', pagamento);
+app.use('/api/anuncio', anuncios);
 
 if (process.env.NODE_ENV === 'production') {
   // Set static folder

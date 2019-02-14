@@ -18,8 +18,8 @@ const ProdutoSchema = new Schema({
     type: Object,
     required: true
   },
-  imagem: {
-    type: String,
+  imagens: {
+    type: [String],
     required: true
   },
   categoria: {
