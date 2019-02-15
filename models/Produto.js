@@ -14,7 +14,7 @@ const ProdutoSchema = new Schema({
     type: String,
     required: true
   },
-  caracteristica: {
+  caracteristicas: {
     type: Object,
     required: true
   },
