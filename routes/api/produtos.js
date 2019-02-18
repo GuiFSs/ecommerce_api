@@ -7,13 +7,16 @@ const Categoria = require('../../models/Categoria');
 const validarProdutoInput = require('../../validation/produto');
 
 /**
- * @route GET api/produtos/todos
+ * @route GET api/produtos
  * @description Get todos produtos
  * @acesso Publico
  */
-router.get('/todos', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const produtos = await Produto.find().exec();
+    const limit = parseInt(req.query.limit) || 20;
+    const produtos = await Produto.find()
+      .limit(limit)
+      .exec();
     if (produtos.length <= 0) {
       return res.status(404).json({ produtos: 'Nenhum produto encontrado' });
     }
@@ -28,7 +31,7 @@ router.get('/todos', async (req, res) => {
  * @description Get todos produtos por categoria
  * @acesso Publico
  */
-router.get('/todos/:categoria', async (req, res) => {
+router.get('/:categoria', async (req, res) => {
   const errors = {};
   try {
     const categoria = await Categoria.findOne({ nome: req.params.categoria });
@@ -36,7 +39,10 @@ router.get('/todos/:categoria', async (req, res) => {
       errors.categoria = 'Essa ainda categoria não existe';
       return res.status(404).json(errors);
     }
-    const produtos = await Produto.find({ categoria: categoria._id }).exec();
+    const limit = parseInt(req.query.limit) || 20;
+    const produtos = await Produto.find({ categoria: categoria._id })
+      .limit(limit)
+      .exec();
     if (produtos.length <= 0) {
       errors.produtos = 'Ainda não existem produtos pare esta categoria';
       return res.status(404).json(errors);
