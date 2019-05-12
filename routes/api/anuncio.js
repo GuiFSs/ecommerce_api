@@ -22,10 +22,7 @@ router.get('/', async (req, res) => {
     const anuncios = await Anuncio.find()
       .limit(limit)
       .exec();
-    if (anuncios.length === 0) {
-      return res.status(404).json({ anuncios: 'Nenhum anuncio encontrado' });
-    }
-    return res.status(200).json({ anuncios });
+    return res.status(200).json(anuncios);
   } catch (err) {
     res.status(400).json({ err });
   }
